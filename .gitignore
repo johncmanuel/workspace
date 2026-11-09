@@ -12,6 +12,7 @@
 /tmp/
 /scratch/
 /prior-art/
+/parity_*.txt
 
 # Local app data and scratch tooling.
 /.freebuff/
@@ -19,6 +20,9 @@
 /.wrangler/
 /audit-wazoo-terminology.py
 /REPO-MAP.md
+
+# Local rule-friction log (linked from the root workspace AGENTS.md).
+/docs/
 
 # Agent session transcripts and exported conversation logs.
 /session-*.md
