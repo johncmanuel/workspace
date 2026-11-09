@@ -166,11 +166,14 @@ All feature work must happen in a raw Git worktree. Never create branches or
 commit directly inside `repos/<repo>`. If an agent's cwd is inside a child
 checkout, it must create and enter a worktree before editing.
 
-### Hard boundaries (human approval required)
+### Judgment and escalation
+
+Default to action for in-scope, reversible work, including merging and
+deploying. Pause and ask when an action is irreversible or high-risk:
 
 - Creating or deleting repositories or manifest entries.
-- Pushing directly to `main` (resets, force operations).
-- Deploying or publishing artifacts.
+- Force-pushing or resetting a shared branch.
+- Spending money or touching secrets.
 
 ### Publishing to JSR
 
@@ -185,7 +188,8 @@ is not enough there (measured 2026-09-26 — `worlds-client-ts` 0.2.1 sat
 unpublished for 12+ minutes after the bump, then went out ~40s after the release
 was created). JSR's `meta.json` does list a `githubRepository` for these
 packages, so a connection exists on paper, but it did not fire in that test.
-Publishing is an external action, so it still needs approval.
+Publishing is an external, irreversible action; treat it as high-risk and
+confirm first unless the task explicitly includes publishing.
 
 ### Code-health standards
 
